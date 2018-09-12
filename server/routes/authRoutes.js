@@ -12,6 +12,12 @@ module.exports = (app) => {
     //Once callback from google oauth is received, push to passport
     app.get('/auth/google/callback/', passport.authenticate('google'));
     
+    app.get('/api/logout', (req, res) => {
+        //Logout is automatically attached to req and can be called easily.
+        req.logout();
+        res.send(req.user);
+    });
+
     //Testing authentication
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
