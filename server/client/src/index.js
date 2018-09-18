@@ -1,8 +1,22 @@
+//React
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+//Redux
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+//App
+import App from './components/App';
+import reducers from './reducers';
+
+//Redux Store / Reducer
+const store = createStore(reducers, {}, applyMiddleware());
+
+//We wrap the App.js in Redux's Provider to handle our
+//Data Store from Redux
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.querySelector('#root')
+);
