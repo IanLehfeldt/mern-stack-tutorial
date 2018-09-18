@@ -13,7 +13,7 @@ passport.serializeUser((user, done) => {
 
 //Takes mongoose model id and turns it back into google profile id
 passport.deserializeUser((id, done) => {
-	User.findById(id).then(user => {
+	User.findById(id).then((user) => {
 		done(null, user);
 	});
 });
@@ -29,21 +29,13 @@ passport.use(
 			proxy: true
 		},
 		//Arrow function that is a callback
-		(accessToken, refreshToken, profile, done) => {
-			// console.log('AccessToken:', accessToken);
-			// console.log('RefreshToken:', refreshToken);
-			// console.log('Profile:', profile);
-			User.findOne({ googleId: profile.id }).then((existingUser) => {
-				if (existingUser) {
-					//we already have a record with given profile ID
-					done(null, existingUser);
-				} else {
-					//create new user with given profile id
-					new User({ googleId: profile.id })
-						.save()
-						.then((user) => done(null, user));
-				}
-			});
+		async (accessToken, refreshToken, profile, done) => {
+			const existingUser = await User.findOne({ googleId: profile.id });
+			if (existingUser) {
+				return done(null, existingUser);
+			}
+			const user = await new User({ googleId: profile.id }).save();
+			done(null, user);
 		}
 	)
 );
