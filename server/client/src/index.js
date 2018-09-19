@@ -1,3 +1,7 @@
+//Materialize CSS
+//Dont need variable from statement
+import 'materialize-css/dist/css/materialize.min.css'
+
 //React
 import React from 'react';
 import ReactDOM from 'react-dom';
