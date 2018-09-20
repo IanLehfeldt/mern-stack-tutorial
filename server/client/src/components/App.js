@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //Router Handlers
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
+import Landing from './Landing';
 //Redux and action handlers
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -9,8 +10,6 @@ import * as actions from '../actions';
 const Dashboard = () => <h2>Dashboard</h2>;
 
 const SurveyNew = () => <h2>SurveyNew</h2>;
-
-const Landing = () => <h2>Landing</h2>;
 
 //Changed App from an active Component to a 
 //Class to handle user data
