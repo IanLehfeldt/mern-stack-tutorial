@@ -8,13 +8,15 @@ import ReactDOM from 'react-dom';
 //Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
 
 //App
 import App from './components/App';
 import reducers from './reducers';
 
+
 //Redux Store / Reducer
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 //We wrap the App.js in Redux's Provider to handle our
 //Data Store from Redux
