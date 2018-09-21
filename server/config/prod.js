@@ -6,5 +6,7 @@ module.exports = {
 	googleClientSecret: process.env.GOOGLE_API_CLIENT_SECRET,
 	mongoURI: process.env.MONGOLAB_TEAL_URI,
 	//Random string of whatever, can be anything
-	cookieKey: process.env.COOKIE_KEY
+	cookieKey: process.env.COOKIE_KEY,
+	stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+	stripeSecretKey: process.env.STRIPE_SECRET_KEY
 };
